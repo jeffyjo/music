@@ -1,0 +1,30 @@
+<ul class="nav navbar-nav navbar-right">
+  <li class="">
+    <!-- <a>HELLO</a> -->
+    <form (ngSubmit)="login(f)" #f="ngForm">          
+      <span class="glyphicon glyphicon-envelope"></span>
+      <input type="email" placeholder="user@gmail.com" name="email" [(ngModel)]="email" required>
+      <span class="glyphicon glyphicon-lock"></span>
+      <input type="password" placeholder="password" name="password" [(ngModel)]="password" required>
+      <button class="btn btn-primary" type="submit">
+          <span class="glyphicon glyphicon-log-in"></span> Login
+      </button>
+      <a class="btn btn-primary" (click)="signUp()" [routerLink]="['/']">
+          <span class="glyphicon glyphicon-user"></span> 
+        Sign Up</a>
+      <div *ngIf="(!f.valid && f._submitted) || !form" class="help-block">
+        Please enter valid E-mail & password
+      </div>
+    </form>
+    <!-- <li>
+      <a (click)="signUp()" [routerLink]="['']">
+        <span class="glyphicon glyphicon-user"></span> 
+      Sign Up</a>
+    </li>
+    <li>
+      <a class="index-login" type="submit">
+        <span class="glyphicon glyphicon-log-in"></span> 
+      Login</a>
+    </li> -->
+    </li>
+  </ul>

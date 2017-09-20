@@ -1,0 +1,78 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap
+}
+
+.button-top {
+    align-self: flex-end;
+    margin: 10px;
+}
+
+.btn {
+    width: 5em;
+}
+
+.show {
+    border: 0;
+    box-shadow: none;
+    background: transparent;
+}
+
+.edit {
+    border: default;
+    box-shadow: default;
+    background: default;
+}
+
+.wrapper-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    
+}
+
+.wrapper-card {
+    background-color: #fff;
+    border-width: 1;
+    border-radius: 2;
+    border-color: #0d0d0d;
+    border-bottom-width: 0;
+    box-shadow: 2px 2px 2px #888888;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 10px;
+}
+
+.wrapper-card-content {
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 10px;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: center;
+}
+
+.gearlist-btnGroup {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+}
+
+.btn-group-check {
+    font-size: 40px;
+}
+
+// https://paulund.co.uk/style-checkboxes-with-css
+
+.gearList-check {
+    cursor: pointer;
+}

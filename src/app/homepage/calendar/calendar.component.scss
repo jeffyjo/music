@@ -1,0 +1,40 @@
+// @import '../../../../node_modules/angular-calendar/dist/css/angular-calendar.css';
+
+//https://thielcole.github.io/ionic2/2017/02/03/Ionic2-Calendar.html
+// Styling calendar
+
+* {
+    //border: 1px solid red;
+}
+
+.wrapper-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    
+}
+
+.wrapper-card {
+    background-color: #eee;
+    border-width: 1;
+    border-radius: 2;
+    border-color: #0d0d0d;
+    border-bottom-width: 0;
+    box-shadow: 2px 2px 2px #888888;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 10px;
+}
+
+.wrapper-card-content {
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 10px;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+}

@@ -1,0 +1,54 @@
+<div class="container well">
+  <div class="wrapper-container">
+    <h3>Add new event</h3>
+    <div class="wrapper-card">
+      <form #f="ngForm" (ngSubmit)="addEvent(f)">
+        <div class="wrapper-card-content">
+          <div class="item">
+            <label for="eventName">Event</label>
+            <input class="form-control" type="text" [(ngModel)]="eventName" name="eventName" id="" required>
+          </div>
+          <div class="item">
+            <label for="startDate">Start date</label>
+            <div class="datepicker-container" >
+              <input class="form-control" mdInput [mdDatepicker]="startPicker" placeholder="Choose a date" [(ngModel)]="startDate" name="startDate" id="" required>
+                <md-datepicker-toggle mdSuffix [for]="startPicker"></md-datepicker-toggle>
+                <md-datepicker #startPicker></md-datepicker>
+            </div>
+          </div>
+          <div class="item">
+              <label for="endDate">End date</label>
+              <div class="datepicker-container" >
+                <input class="form-control" mdInput [mdDatepicker]="endPicker" placeholder="Choose a date" [(ngModel)]="endDate" name="endDate" id="" required>
+                  <md-datepicker-toggle mdSuffix [for]="endPicker"></md-datepicker-toggle>
+                  <md-datepicker #endPicker></md-datepicker>
+              </div>
+            </div>
+          <div class="item">
+            <md-input-container style="margin-right: 10px;">
+              <md-select 
+                placeholder="Color" 
+                #select="mdSelect" 
+                [(ngModel)]="color" 
+                name="color" 
+                required>
+                <md-option 
+                  *ngFor="let c of colors" 
+                  class="color-box-container" 
+                  [value]="c" 
+                  ><span 
+                    class="color-box" 
+                    [ngStyle]="{'background-color' : c.colorHex.primary }"
+                  ></span> {{ c.value }}</md-option>
+              </md-select>
+            </md-input-container>
+          </div>  
+          <div class="item">
+            <label for="">Add Event</label>
+            <button class="btn btn-success" type="submit" [disabled]="!f.valid" >Save event</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,115 @@
+<div class="wrapper-card">
+    <div class="wrapper-content">
+      <div class="pull-right">
+        <label 
+          class="bandmember-label"
+          (click)="editPressed()"
+          ><span>
+            <i *ngIf="!isEditting" 
+              class="fa fa-pencil" 
+              aria-hidden="true"
+            ></i>
+            <i *ngIf="isEditting"
+              class="fa fa-times"
+              aria-hidden="true"
+            ></i>
+          </span>
+        </label>
+        <label 
+          (click)="deletePressed()"
+          class="bandmember-label" 
+          ><span><i class="fa fa-trash" aria-hidden="true"></i></span>
+      </label>
+      </div>
+      <br>
+      <form #memberForm="ngForm" (ngSubmit)="savePressed(memberForm)">
+        <div class="item-container">
+          <div class="item">
+              <label for="name">Name</label>
+              <input 
+                class="form-control"
+                type="text" 
+                [(ngModel)]="member.name"
+                name="name"
+                [disabled]="!isEditting"
+                [ngClass]=" isEditting ? 'edit' : 'not-edit' "
+                >
+            </div>
+            <div class="item">
+              <label for="role">Role</label>
+              <input 
+                class="form-control"
+                type="text" 
+                [(ngModel)]="member.role"
+                name="role"
+                [disabled]="!isEditting"
+                [ngClass]=" isEditting ? 'edit' : 'not-edit' " >
+            </div>
+        </div>
+        <div *ngIf="isEditting" class="item">
+          <label for="mail">E-mail</label>
+          <input 
+            class="form-control"
+            type="email"
+            [(ngModel)]="member.mail"
+            name="mail"
+            required
+            pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+        </div>
+        <div *ngIf="isEditting" class="item">
+          <label for="phone">Phone</label>
+          <input 
+            class="form-control"
+            type="tel"
+            [(ngModel)]="member.phone"
+            #phone="ngModel"
+            name="phone"
+            required
+            minlength="8"
+            maxlength="8">
+        </div>
+        <div *ngIf="isEditting" class="item">
+          <label for="color">Color</label>
+          <md-input-container class="color-container" style="margin-right: 10px">
+            <div class="color-box" [ngStyle]="{'background-color' : member.color?.colorHex.primary }"></div>
+            <md-select 
+              #select="mdSelect" 
+              [(ngModel)]="member.color" 
+              name="color" 
+              required
+              (click)="updatedColor($event)">
+              <md-option 
+                *ngIf="!isColorUpdated && member.color !== 'undefined'"
+                class="color-box-container"
+                [value]="member.color">{{ member.color?.value }}
+              </md-option>
+              <md-option 
+                *ngFor="let color of colors" 
+                class="color-box-container" 
+                [value]="color">
+                <span 
+                  class="color-box" 
+                  [ngStyle]="{'background-color' : color.colorHex.primary }"
+                ></span> {{ color.value }}
+              </md-option>
+            </md-select>
+          </md-input-container>
+        </div>
+        <div [hidden]="true">
+          <input 
+            type="boolean" 
+            name="edit"
+            [(ngModel)]="member.edit">
+        </div>
+        <div *ngIf="isEditting" class="item">
+          <button 
+            class="btn btn-success"
+            type="submit"
+            [disabled]="!memberForm.valid"
+            ><span>
+              <i class="fa fa-floppy-o" aria-hidden="true"></i>
+            </span> Save</button>
+        </div>
+      </form>
+    </div>
+</div>

@@ -1,0 +1,108 @@
+<div class="container well">
+    <div *ngIf="dataReady; else loading" class="wrapper-container">
+
+      <!-- Gear List-->
+      <!-- <input class="form-control" type="text" [(ngModel)]="filteredStatus" placeholder="search for instrument..." >  -->
+
+      <ng-template #loading>
+    <div class="text-center">
+      <i class="fa fa-spin fa-spinner fa-5x"></i>
+      <br>
+      Loading gear...
+    </div>
+  </ng-template> 
+
+      <div *ngFor="let item of gearList | sorting: 'category' " class="wrapper-card">
+        <form>
+          <div class="wrapper-card-content">
+            <div class="item">
+              <label for="">Name</label>
+              <input 
+                class="formcontrol"
+                [ngClass]="{'show': !isEditting, 'edit': isEditting}"
+                type="text" 
+                placeholder="Insert gear name" 
+                [(ngModel)]="item.name" 
+                name="gearName"
+                [disabled]="!isEditting"
+              >
+            </div>
+            <div class="item">
+              <label for="">Owner</label>
+                <input 
+                  class="formcontrol"
+                  [ngClass]="{'show': !isEditting, 'edit': isEditting}"
+                  type="text" 
+                  placeholder="Insert gear owner" 
+                  [(ngModel)]="item.owner" 
+                  name="gearOwner"
+                  [disabled]="!isEditting"
+                >
+            </div>
+            <div class="item">
+              <label for="">Category</label>
+              <input 
+                class="formcontrol"
+                [ngClass]="{'show': !isEditting, 'edit': isEditting}"
+                type="text" 
+                placeholder="Insert gear category" 
+                [(ngModel)]="item.category" 
+                name="gearCategory"
+                [disabled]="!isEditting"
+              >
+            </div>
+            <div class="item" >
+              <label *ngIf="!isEditting" for="">Done</label>
+              <label *ngIf="isEditting" for="">Edit or Delete</label>
+              <div *ngIf="!isEditting" class="gearList-check-div">
+                  <input 
+                    type="checkbox" 
+                    class="gearList-check" 
+                    id="gearList-check" 
+                    name="done" 
+                    [(ngModel)]="item.done">
+              </div>
+              
+              <div *ngIf="isEditting" class="gearlist-btnGroup">
+                <button class="btn btn-danger" (click)="deletePressed(item)" >Delete</button>
+                <button class="btn btn-success" (click)="saveClicked(item)">Save</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="pull-right button-top">
+        <button *ngIf="isEditting" class="btn btn-primary" (click)="saveAllClicked()">Save All</button>  
+        <button 
+            class="btn btn-primary" 
+            id="gearlist-editBtn" 
+            (click)="editClicked()">{{ editButtonText }}</button>
+      </div>
+
+      <!-- Add new Item-->
+      <h3>Add new</h3>
+      <div class="wrapper-card">
+        <form #f="ngForm" (ngSubmit)="addClicked(f)">
+            <div class="wrapper-card-content">
+                <div class="item">
+                  <label for="name">Name</label>
+                  <input class="form-control" type="text" ngModel name="name" required>
+                </div>
+                <div class="item">
+                  <label for="owner">Owner</label>
+                  <input class="form-control" type="text" ngModel name="owner" required>
+                </div>
+                <div class="item">
+                  <label for="cateory">Category</label>
+                  <input class="form-control" type="text" ngModel name="category" required>
+                </div>
+                <div class="item">
+                  <label for="">Done</label>
+                  <button class="btn btn-success" type="submit" [disabled]="!f.valid" >Add</button>
+                </div>
+              </div>
+        </form>
+      </div>
+
+    </div>
+</div>

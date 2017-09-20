@@ -1,0 +1,20 @@
+<div class="container">
+  <div *ngIf="dataAvailable" class="pull-left well" [ngStyle]="{ width: '50%' }">
+    <h3>Upcoming events</h3>
+    <div *ngFor="let event of events" class="wrapper-card">
+      <div class="wrapper-card-content">
+        <div class="item">
+          <div class="color-box"[ngStyle]="{'background-color' : event.color.primary }"></div>
+        </div>
+        <div class="item">
+          <label>Event name</label>
+          <label>{{ event.title }}</label>
+        </div>
+        <div class="item">
+          <label>Date</label>
+          <label>{{ event.start | date: 'dd/MM/yyyy' }}</label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

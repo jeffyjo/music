@@ -1,1 +1,62 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'variables';
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~angular-calendar/dist/css/angular-calendar.css';
+@import '~fullcalendar/dist/fullcalendar.min.css';
+
+.wrapper-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.wrapper-card {
+    background-color: $wrapperCardBackgroundColor;
+    border-width: 1;
+    border-radius: 2;
+    border-color: $wrapperCardBorder;
+    border-bottom-width: 0;
+    box-shadow: 2px 2px 2px $wrapperCardBoxShadow;
+    border-radius: 2%;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 10px;
+}
+
+.wrapper-card-content {
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 10px;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: center;
+}
+
+.color-box-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.color-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.color-box{
+    float: left;
+    width: 20px;
+    height: 20px;
+    // border: 1px solid #000000;
+    margin: 5px;
+    border-radius: 50%;
+}

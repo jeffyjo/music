@@ -1,0 +1,35 @@
+.pull-right {
+    padding-top: 2%;
+    padding-right: 2%;
+}
+
+.fa {
+    cursor: pointer;
+}
+
+.bandmember-label {
+    font-size: 1.2em;
+}
+
+.item-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.item {
+    padding-left: 2%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    width: 90%;
+}
+
+.item button {
+    width: 50%;
+    align-self: flex-end;
+}
+
+.not-edit {
+    background-color: transparent;
+    border: 0;
+    box-shadow: none;
+}
