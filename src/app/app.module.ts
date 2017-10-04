@@ -56,6 +56,10 @@ import { Colors } from './models/colors';
 // Pipes
 import { FilterArrayPipe } from './pipes/filter-array-pipe';
 import { SortingPipe } from './pipes/sorting-pipe';
+import { EventComponent } from './homepage/event/event.component';
+import { TasksDashboardComponent } from './homepage/event/tasks-dashboard/tasks-dashboard.component';
+import { TaskComponent } from './homepage/event/tasks-dashboard/column/task/task.component';
+import { ColumnComponent } from './homepage/event/tasks-dashboard/column/column.component';
 
 
 // Firebase consts
@@ -86,7 +90,11 @@ export const firebaseConfig = {
     HomepageUiComponent,
     BandinfoComponent,
     BandmemberComponent,
-    SortingPipe
+    SortingPipe,
+    EventComponent,
+    TasksDashboardComponent,
+    TaskComponent,
+    ColumnComponent
   ],
   imports: [
     BrowserModule,

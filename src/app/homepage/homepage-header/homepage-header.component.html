@@ -1,21 +1,21 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" [routerLink]="['/homepage']">Fremtidens Musiker</a>
+      <a class="navbar-brand" [routerLink]="['/']">Fremtidens Musiker</a>
     </div>
     <ul class="nav navbar-nav">
       <li 
         routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }">
-        <a [routerLink]="['/homepage']">Home</a>
+        <a [routerLink]="['']">Home</a>
       </li>
-      <li routerLinkActive="active"><a [routerLink]="['calendar']">Calendar</a></li>
-      <li routerLinkActive="active"><a [routerLink]="['gearlist']">Gear List</a></li>
-      <li routerLinkActive="active"><a [routerLink]="['bandinfo']">Bandinfo</a></li>
+      <li routerLinkActive="active"><a [routerLink]="['/calendar']">Calendar</a></li>
+      <li routerLinkActive="active"><a [routerLink]="['/gearlist']">Gear List</a></li>
+      <li routerLinkActive="active"><a [routerLink]="['/bandinfo']">Bandinfo</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a>{{ userName }}</a></li>
-      <li><a [routerLink]="['/']">
+      <li><a [routerLink]="['']">
         <span class="glyphicon glyphicon-log-out"></span> 
       Logout</a></li>
     </ul>

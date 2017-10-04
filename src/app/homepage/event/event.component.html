@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="well">
+    <!-- Event name, startdate, enddate, (color), gearlist -->
+    <div>
+      <label for="eventName">Event</label>
+      <br>
+      <label for="startDate">startDate</label>
+      <br>
+      <label for="endDate">endDate</label>
+      <br>
+      <label for="color">Color</label>
+      <br>
+      <label for="gearList">GearList</label>
+    </div>
+  </div>
+
+  <!-- tasks : Before, under, after -->
+  <div class="well">
+    <div>
+      <ul class="nav nav-tabs">
+        <li><a routerLinkActive="active">Before</a></li>
+        <li><a routerLinkActive="active">During</a></li>
+        <li><a routerLinkActive="active">After</a></li>
+      </ul>
+    </div>
+    <app-tasks-dashboard></app-tasks-dashboard>
+  </div>
+</div>

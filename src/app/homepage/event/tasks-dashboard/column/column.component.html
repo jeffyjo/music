@@ -1,0 +1,17 @@
+<div class="column">
+  <div class="column-header">
+    <h4>column title</h4>
+    <input [style.display]="editingColumn ?'' : 'none' " type="text">
+  </div>
+  <ul class="card-list">
+    <li>
+      <app-task></app-task>
+    </li>
+  </ul>
+  <div class="add-card">
+    <span [style.display]="addingCard ? 'none' : ''" >
+        Add a card...
+    </span>
+    <input [style.display]="addingCard ? '' : 'none' " type="text">
+  </div>
+</div>

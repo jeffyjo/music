@@ -1,0 +1,19 @@
+<!-- https://github.com/mrf28/a2gtm/blob/master/src/app/ -->
+
+<div class="board-title">
+  <span>Board title</span>
+  <input 
+    [style.display]="editingTilte ? '' : 'none' "
+    class="form-control" 
+    type="text">
+</div>
+
+<section id="main">
+  <div>
+    <app-column></app-column>
+  </div>
+  <div class="add-column">
+    <span>Add a list...</span>
+    <input [style.display]="addingColumn ? '' : 'none' " type="text">
+  </div>
+</section>
