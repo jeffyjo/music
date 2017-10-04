@@ -4,6 +4,16 @@
     flex-wrap: wrap
 }
 
+.add {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    * {
+        padding: 10px;
+    }
+}
+
 .button-top {
     align-self: flex-end;
     margin: 10px;

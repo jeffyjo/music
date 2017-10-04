@@ -38,6 +38,7 @@ import { CalenderAddComponent } from './homepage/calendar/calender-add/calender-
 import { HomepageUiComponent } from './homepage/homepage-ui/homepage-ui.component';
 import { BandinfoComponent } from './homepage/bandinfo/bandinfo.component';
 import { BandmemberComponent } from './homepage/bandinfo/bandmember/bandmember.component';
+import { AddListComponent } from './homepage/gear-list/add-list/add-list.component';
 
 // Services && Overall Components
 import { FirebaseService } from './services/firebase.service';
@@ -52,6 +53,9 @@ import { AlertService } from './services/alert.service';
 import { BandmemberService } from './services/bandmember.service';
 import { BandinfoService } from './services/bandinfo.service';
 import { Colors } from './models/colors';
+import { AddListDialog } from './homepage/gear-list/add-list/addList.component';
+import { GearListsService } from './homepage/gear-list/gear-lists.service';
+
 
 // Pipes
 import { FilterArrayPipe } from './pipes/filter-array-pipe';
@@ -60,6 +64,8 @@ import { EventComponent } from './homepage/event/event.component';
 import { TasksDashboardComponent } from './homepage/event/tasks-dashboard/tasks-dashboard.component';
 import { TaskComponent } from './homepage/event/tasks-dashboard/column/task/task.component';
 import { ColumnComponent } from './homepage/event/tasks-dashboard/column/column.component';
+import { DashboardComponent } from './homepage/event/dashboard/dashboard.component';
+
 
 
 // Firebase consts
@@ -94,7 +100,10 @@ export const firebaseConfig = {
     EventComponent,
     TasksDashboardComponent,
     TaskComponent,
-    ColumnComponent
+    ColumnComponent,
+    AddListComponent,
+    AddListDialog,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -118,7 +127,8 @@ export const firebaseConfig = {
   ],
   entryComponents: [
     ConfirmDialog,
-    EditDialog
+    EditDialog,
+    AddListDialog
   ],
   providers: [
     FirebaseService,
@@ -129,7 +139,8 @@ export const firebaseConfig = {
     AlertService,
     BandmemberService,
     BandinfoService,
-    Colors
+    Colors,
+    GearListsService
   ],
   bootstrap: [AppComponent]
 })

@@ -3,18 +3,25 @@
     <!-- Event name, startdate, enddate, (color), gearlist -->
     <div>
       <label for="eventName">Event</label>
+      <input class="form-control" type="text">
       <br>
       <label for="startDate">startDate</label>
+      <input class="form-control" type="text">
       <br>
       <label for="endDate">endDate</label>
+      <input class="form-control" type="text">
       <br>
       <label for="color">Color</label>
+      <input class="form-control" type="text">
       <br>
       <label for="gearList">GearList</label>
+      <select class="form-control" name="" id="">
+        <option value="">Gealist</option>
+      </select>
     </div>
   </div>
 
-  <!-- tasks : Before, under, after -->
+  <!-- tasks : Before, During, after -->
   <div class="well">
     <div>
       <ul class="nav nav-tabs">
@@ -23,6 +30,6 @@
         <li><a routerLinkActive="active">After</a></li>
       </ul>
     </div>
-    <app-tasks-dashboard></app-tasks-dashboard>
+    <app-dashboard></app-dashboard>
   </div>
 </div>

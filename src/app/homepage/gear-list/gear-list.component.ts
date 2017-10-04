@@ -6,6 +6,7 @@ import { GearListService } from './../../services/gearList.service';
 import { FirebaseService } from './../../services/firebase.service';
 import { FilterArrayPipe } from './../../pipes/filter-array-pipe';
 import { Category } from './../../models/category';
+import { GearListsService } from './gear-lists.service';
 
 class Gear {
   id: string
@@ -23,6 +24,8 @@ class Gear {
 })
 
 export class GearListComponent implements OnInit {
+  gearLists
+  list
   addButtonText = 'Add'
   editButtonText = 'Edit';
   isAdding = false
@@ -32,7 +35,9 @@ export class GearListComponent implements OnInit {
   dataReady = false;
   catList = new Category().categoryList
 
-  constructor(private gearListService: GearListService) { }
+  constructor(private gearListService: GearListService,
+              private lists: GearListsService,
+  ) { }
 
   // Firebase initiazation
   ngOnInit() {  
@@ -40,6 +45,17 @@ export class GearListComponent implements OnInit {
       this.gearList = list
       this.dataReady = true
     })
+    this.lists.getFullList().subscribe(lists => {
+      this.gearLists = lists
+      this.list = this.gearLists[0]
+    })
+
+  }
+
+  
+  // Gearlist changed
+  gearListChanged(){
+    console.log(JSON.stringify(this.list))
   }
 
   // Add Button Clicked

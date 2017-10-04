@@ -1,14 +1,14 @@
 <div class="container">
-  <div class="well">
-      <select class="form-control" name="" id="">
-          <option value="">First</option>
+  <div class="well add">
+      <select class="form-control"  [(ngModel)]="list" name="" id="" (change)="gearListChanged()">
+          <option *ngFor="let list of gearLists" value="{{ list }}">{{ list.name }}</option>
         </select>
+        <br>
+          <app-add-list></app-add-list>
   </div>
 
 <div class="well">
     <div *ngIf="dataReady; else loading" class="wrapper-container">
-
-      
 
       <!-- Gear List-->
       <!-- <input class="form-control" type="text" [(ngModel)]="filteredStatus" placeholder="search for instrument..." >  -->
