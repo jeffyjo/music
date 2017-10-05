@@ -1295,13 +1295,12 @@ var EventComponent = /** @class */ (function () {
         this.es = es;
     }
     EventComponent.prototype.ngOnInit = function () {
-        this.event = this.es.getEvent(this.route.snapshot.params['id']);
-    };
-    EventComponent.prototype.ngAfterViewInit = function () {
         var _this = this;
         setTimeout(function () {
             console.log(_this.es.getEvent(_this.route.snapshot.params['id']));
         }, 1000);
+    };
+    EventComponent.prototype.ngAfterViewInit = function () {
     };
     EventComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
@@ -2726,18 +2725,17 @@ var EventsService = /** @class */ (function () {
         return this.events;
     };
     EventsService.prototype.getEvent = function (eventKey) {
+        var _this = this;
         var event;
         console.log(typeof (eventKey));
         this.events.forEach(function (item, index) {
             item.map(function (ev) {
                 if (eventKey == ev.$key) {
-                    event = ev;
-                    return event;
+                    _this.event = ev;
+                    return _this.event;
                 }
             });
         });
-        console.log(event);
-        return event;
     };
     EventsService.prototype.addEvent = function (event) {
         return this.events.push(event);
