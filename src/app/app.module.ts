@@ -40,7 +40,7 @@ import { BandinfoComponent } from './homepage/bandinfo/bandinfo.component';
 import { BandmemberComponent } from './homepage/bandinfo/bandmember/bandmember.component';
 import { AddListComponent } from './homepage/gear-list/add-list/add-list.component';
 
-// Services && Overall Components
+// Services & Overall Components
 import { FirebaseService } from './services/firebase.service';
 import { GearListService } from './services/gearList.service';
 import { EventsService } from './services/events.service';
@@ -55,6 +55,7 @@ import { BandinfoService } from './services/bandinfo.service';
 import { Colors } from './models/colors';
 import { AddListDialog } from './homepage/gear-list/add-list/addList.component';
 import { GearListsService } from './homepage/gear-list/gear-lists.service';
+import { ClickOutsideDirective } from './shared/clickOutside.directive';
 
 
 // Pipes
@@ -62,7 +63,7 @@ import { FilterArrayPipe } from './pipes/filter-array-pipe';
 import { SortingPipe } from './pipes/sorting-pipe';
 import { EventComponent } from './homepage/event/event.component';
 import { TasksDashboardComponent } from './homepage/event/tasks-dashboard/tasks-dashboard.component';
-import { TaskComponent } from './homepage/event/tasks-dashboard/column/task/task.component';
+import { TaskComponent } from './homepage/event/dashboard/task/task.component';
 import { ColumnComponent } from './homepage/event/tasks-dashboard/column/column.component';
 import { DashboardComponent } from './homepage/event/dashboard/dashboard.component';
 
@@ -103,7 +104,8 @@ export const firebaseConfig = {
     ColumnComponent,
     AddListComponent,
     AddListDialog,
-    DashboardComponent
+    DashboardComponent,
+    ClickOutsideDirective
   ],
   imports: [
     BrowserModule,

@@ -1,66 +1,66 @@
-import { Injectable, EventEmitter } from '@angular/core';
-import { Card } from './../homepage/event/tasks-dashboard/column/task/card';
-import { TasksDashboardComponent } from './../homepage/event/tasks-dashboard/tasks-dashboard.component';
-import { Column } from './../homepage/event/tasks-dashboard/column/column';
+// import { Injectable, EventEmitter } from '@angular/core';
+// import { Card } from './../homepage/event/tasks-dashboard/column/task/card';
+// import { TasksDashboardComponent } from './../homepage/event/tasks-dashboard/tasks-dashboard.component';
+// import { Column } from './../homepage/event/tasks-dashboard/column/column';
 
 
-// import { ROOT_URL } from './constants'
+// // import { ROOT_URL } from './constants'
 
-declare var io;
+// declare var io;
 
-@Injectable()
-export class WebSocketService {
-  socket: any;
-  public onColumnAdd: EventEmitter<Column>;
-  public onCardAdd: EventEmitter<Card>;
-  public onColumnUpdate: EventEmitter<Column>;
-  public onCardUpdate: EventEmitter<Card>;
+// @Injectable()
+// export class WebSocketService {
+//   socket: any;
+//   public onColumnAdd: EventEmitter<Column>;
+//   public onCardAdd: EventEmitter<Card>;
+//   public onColumnUpdate: EventEmitter<Column>;
+//   public onCardUpdate: EventEmitter<Card>;
 
-  constructor() {
-    this.onColumnAdd = new EventEmitter();
-    this.onCardAdd = new EventEmitter();
-    this.onColumnUpdate = new EventEmitter();
-    this.onCardUpdate = new EventEmitter();
-  }
+//   constructor() {
+//     this.onColumnAdd = new EventEmitter();
+//     this.onCardAdd = new EventEmitter();
+//     this.onColumnUpdate = new EventEmitter();
+//     this.onCardUpdate = new EventEmitter();
+//   }
 
-  connect(){
-    // this.socket = io(ROOT_URL);
+//   connect(){
+//     // this.socket = io(ROOT_URL);
 
-    this.socket.on('addColumn', data => {
-      this.onColumnAdd.emit(<Column>data.column);
-    });
-    this.socket.on('addCard', data => {
-      this.onCardAdd.emit(<Card>data.card);
-    });
-    this.socket.on('updateColumn', data => {
-      this.onColumnUpdate.emit(<Column>data.column);
-    });
-    this.socket.on('updateCard', data => {
-      this.onCardUpdate.emit(<Card>data.card);
-    });
-  }
+//     this.socket.on('addColumn', data => {
+//       this.onColumnAdd.emit(<Column>data.column);
+//     });
+//     this.socket.on('addCard', data => {
+//       this.onCardAdd.emit(<Card>data.card);
+//     });
+//     this.socket.on('updateColumn', data => {
+//       this.onColumnUpdate.emit(<Column>data.column);
+//     });
+//     this.socket.on('updateCard', data => {
+//       this.onCardUpdate.emit(<Card>data.card);
+//     });
+//   }
 
-  join(boardId: string) {
-    this.socket.emit('joinBoard', boardId);
-  }
+//   join(boardId: string) {
+//     this.socket.emit('joinBoard', boardId);
+//   }
 
-  leave(boardId: string) {
-    this.socket.emit('leaveBoard', boardId);
-  }
+//   leave(boardId: string) {
+//     this.socket.emit('leaveBoard', boardId);
+//   }
 
-  addColumn(boardId:string, column: Column){
-    this.socket.emit('addColumn', { boardId: boardId, column: column });
-  }
+//   addColumn(boardId:string, column: Column){
+//     this.socket.emit('addColumn', { boardId: boardId, column: column });
+//   }
 
-  addCard(boardId: string, card: Card) {
-    this.socket.emit('addCard', { boardId: boardId, card: card });
-  }
+//   addCard(boardId: string, card: Card) {
+//     this.socket.emit('addCard', { boardId: boardId, card: card });
+//   }
 
-  updateColumn(boardId: string, column: Column) {
-    this.socket.emit('updateColumn', { boardId: boardId, column: column });
-  }
+//   updateColumn(boardId: string, column: Column) {
+//     this.socket.emit('updateColumn', { boardId: boardId, column: column });
+//   }
 
-  updateCard(boardId: string, card: Card) {
-    this.socket.emit('updateCard', { boardId: boardId, card: card });
-  }
-}
+//   updateCard(boardId: string, card: Card) {
+//     this.socket.emit('updateCard', { boardId: boardId, card: card });
+//   }
+// }

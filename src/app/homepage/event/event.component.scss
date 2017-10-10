@@ -1,3 +1,8 @@
 li {
     cursor: pointer;
 }
+
+.datepicker-container {
+    display: flex;
+    flex-direction: row;
+}

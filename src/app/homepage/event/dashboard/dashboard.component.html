@@ -1,7 +1,6 @@
 <div class="container">
-    <h3>Tasks</h3>
-    <div class="tasks">
-      
+    <div class="wrapper-container">
+      <app-task *ngFor="let card of cards" [card]="card" (clickOutside)="close()"></app-task>
     </div>
 </div> 
  

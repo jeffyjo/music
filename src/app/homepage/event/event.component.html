@@ -1,33 +1,87 @@
 <div class="container">
-  <div class="well">
+
+    <ng-template #loading>
+      <div class="text-center">
+        <i class="fa fa-spin fa-spinner fa-5x"></i>
+        <br>
+        Loading event...
+      </div>
+    </ng-template> 
+
+  <div *ngIf="eventAvailable; else loading" class="well">
     <!-- Event name, startdate, enddate, (color), gearlist -->
-    <div>
-      <label for="eventName">Event</label>
-      <input class="form-control" type="text">
-      <br>
-      <label for="startDate">startDate</label>
-      <input class="form-control" type="text">
-      <br>
-      <label for="endDate">endDate</label>
-      <input class="form-control" type="text">
-      <br>
-      <label for="color">Color</label>
-      <input class="form-control" type="text">
-      <br>
-      <label for="gearList">GearList</label>
-      <select class="form-control" name="" id="">
-        <option value="">Gealist</option>
-      </select>
-    </div>
+    <form #eventForm="ngForm" (submit)="submitEvent(eventForm)" >
+      <div>
+        <label for="eventName">Event</label>
+        <input class="form-control" type="text" [(ngModel)]="event.title" name="title" >
+        <br>
+        <!-- <label for="startDate">startDate</label>
+        <input class="form-control" type="date" [ngModel]="event.start | date:'yyyy-MM-dd'" name="startDate" (ngModelChange)="event.start = $event" > -->
+        <label for="eventStartDate">Start Date</label>
+        <div class="datepicker-container">
+            <input 
+                class="form-control" 
+                mdInput [mdDatepicker]="startPicker" 
+                [ngModel]="event.start" 
+                name="startdate" 
+                required
+                (ngModelChange)="event.start = $event">
+            <md-datepicker-toggle mdSuffix [for]="startPicker"></md-datepicker-toggle>
+            <md-datepicker #startPicker></md-datepicker>
+        </div>
+        <br>
+        <!-- <label for="endDate">endDate</label>
+        <input class="form-control" type="date" [ngModel]="event.end | date:'yyyy-MM-dd'" (ngModelChange)="event.end = $event "  name="endDate"> -->
+        <label for="endDate">End date</label>
+        <div class="datepicker-container">
+            <input 
+                class="form-control" 
+                mdInput [mdDatepicker]="endPicker" 
+                [ngModel]="event.end" 
+                name="endDate" 
+                required
+                (ngModelChange)="event.end = $event">
+            <md-datepicker-toggle mdSuffix [for]="endPicker"></md-datepicker-toggle>
+            <md-datepicker #endPicker></md-datepicker>
+        </div>
+        <br>
+        <!-- <label for="color">Color</label>
+        <input class="form-control" type="text" [(ngModel)]="event.color" name="color"> -->
+        <label for="color">Color</label>
+        <md-input-container class="color-container" style="margin-right: 10px;">
+        <div class="color-box" [ngStyle]="{'background-color' : event.color?.colorHex.primary }"></div>
+        <md-select #select="mdSelect" [(ngModel)]="event.color" name="color" required (click)="updated($event)">
+            <md-option 
+                *ngIf="!colorUpdated"
+                class="color-box-container"
+                [value]="event.color">{{ event.color.value }}
+            </md-option>
+            <md-option 
+                *ngFor="let c of colors" 
+                class="color-box-container" 
+                [value]="c">
+                <span class="color-box" 
+                    [ngStyle]="{'background-color' : c.colorHex.primary }"
+                ></span> {{ c.value }}</md-option>
+        </md-select>
+        </md-input-container>
+        <br>
+        <label for="gearList">GearList</label>
+        <select class="form-control" name="" id="">
+          <option value="">Gealist</option>
+        </select>
+      </div>
+      </form>
   </div>
 
   <!-- tasks : Before, During, after -->
   <div class="well">
+    <h3>Tasks</h3>
     <div>
       <ul class="nav nav-tabs">
-        <li><a routerLinkActive="active">Before</a></li>
-        <li><a routerLinkActive="active">During</a></li>
-        <li><a routerLinkActive="active">After</a></li>
+        <li><a routerLinkActive="active" routerLink="[/before]" >Before</a></li>
+        <li><a routerLinkActive="active" routerLink="[/during]">During</a></li>
+        <li><a routerLinkActive="active" routerLink="[/after]">After</a></li>
       </ul>
     </div>
     <app-dashboard></app-dashboard>

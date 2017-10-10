@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { EventsService } from './../../services/events.service';
 import { Event } from './../../models/event';
@@ -12,7 +13,10 @@ export class HomepageUiComponent implements OnInit {
   events
   dataAvailable = false
 
-  constructor(private es: EventsService) { }
+  constructor(private es: EventsService,
+              private router: Router
+  
+  ) { }
 
   ngOnInit() {
     this.events = []
@@ -35,6 +39,11 @@ export class HomepageUiComponent implements OnInit {
         });
         this.dataAvailable = true
     })
+  }
+
+  goToEvent(e){
+    // this.es.event.next(e)
+    this.router.navigate(['events', e.$key])
   }
 
 }

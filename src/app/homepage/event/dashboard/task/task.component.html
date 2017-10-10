@@ -1,0 +1,11 @@
+<div class="card" (click)="editCard()">
+  <div class="item">
+    <label *ngIf="!editingCard" type="text">{{ card.title }}</label>
+    <input *ngIf="editingCard" class="form-control" type="text" name="" id="" [(ngModel)]="currentTitle">
+    <br>
+    <div class="content">
+        <textarea class="form-control" name="" id="" cols="10" rows="5"></textarea>
+        <input class="form-control" type="checkbox">
+    </div>
+  </div>
+</div>

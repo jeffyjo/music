@@ -46,6 +46,7 @@ export class GearListComponent implements OnInit {
       this.dataReady = true
     })
     this.lists.getFullList().subscribe(lists => {
+      console.log(lists)
       this.gearLists = lists
       this.list = this.gearLists[0]
     })
@@ -55,7 +56,7 @@ export class GearListComponent implements OnInit {
   
   // Gearlist changed
   gearListChanged(){
-    console.log(JSON.stringify(this.list))
+    console.log(JSON.stringify(this.list.name))
   }
 
   // Add Button Clicked

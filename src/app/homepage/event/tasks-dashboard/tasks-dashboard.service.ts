@@ -1,9 +1,9 @@
-import { BoardsService } from './mockboard.service';
+// import { BoardsService } from './mockboard.service';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { Board } from './board';
 import { Column } from './column/column';
-import { Card } from './column/task/card';
+// import { Card } from './column/task/card';
 
 @Injectable()
 export class BoardService {
