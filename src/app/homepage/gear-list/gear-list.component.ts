@@ -24,8 +24,11 @@ class Gear {
 })
 
 export class GearListComponent implements OnInit {
-  gearLists
+  gearLists = []
   list
+  currentList
+  listChanged = false;
+  listReady = false
   addButtonText = 'Add'
   editButtonText = 'Edit';
   isAdding = false
@@ -37,26 +40,50 @@ export class GearListComponent implements OnInit {
 
   constructor(private gearListService: GearListService,
               private lists: GearListsService,
-  ) { }
+  ) { 
+    // Get list to dropdown
+    this.lists.getFullList().subscribe(lists => {
+      // this.gearLists = lists
+      lists.map(list => {
+        if(list.primary){
+          this.list = list
+          this.listReady = true
+          this.gearLists[0] = list
+          console.log(list)
+          let objToArray = Object.keys(this.list.gear).map( gear => {
+            return this.list.gear[gear]
+          })
+          this.gearList = objToArray
+          this.dataReady = true
+        } else {
+          console.log(list)
+          this.gearLists.push(list)
+        }
+      })
+    })
+  }
 
   // Firebase initiazation
   ngOnInit() {  
+    // get list of gear from firebase
     this.gearListService.getGearList().subscribe(list => {
-      this.gearList = list
-      this.dataReady = true
-    })
-    this.lists.getFullList().subscribe(lists => {
-      console.log(lists)
-      this.gearLists = lists
-      this.list = this.gearLists[0]
+      // console.log(list)
+      // this.gearList = list
+      // this.dataReady = true
     })
 
+    // Get list from selected list
+    // this.gearList = this.list.gear
+    // this.dataReady = true
   }
 
-  
-  // Gearlist changed
-  gearListChanged(){
-    console.log(JSON.stringify(this.list.name))
+  listPressed(list, e){
+    
+    // Object.keys(list).map(i => console.log(i))
+    let a = {}
+    Object.assign(a, list)
+    console.log(e)
+    
   }
 
   // Add Button Clicked
