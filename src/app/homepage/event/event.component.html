@@ -79,9 +79,13 @@
     <h3>Tasks</h3>
     <div>
       <ul class="nav nav-tabs">
-        <li><a routerLinkActive="active" routerLink="[/before]" >Before</a></li>
-        <li><a routerLinkActive="active" routerLink="[/during]">During</a></li>
-        <li><a routerLinkActive="active" routerLink="[/after]">After</a></li>
+        <li 
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact:true}">
+          <a routerLink="['/before']" >Before</a>
+        </li>
+        <li routerLinkActive="active"><a routerLink="['/during']">During</a></li>
+        <li routerLinkActive="active"><a routerLink="['/after']">After</a></li>
       </ul>
     </div>
     <app-dashboard></app-dashboard>

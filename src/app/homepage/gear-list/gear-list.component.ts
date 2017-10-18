@@ -1,3 +1,4 @@
+import { GearList } from './../../models/gearlist';
 import { element } from 'protractor';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -15,6 +16,14 @@ class Gear {
   category: string
   done : boolean
   $key : any
+}
+
+interface List {
+  _id: string
+  name: string
+  primary: boolean
+  $key: any
+  gear: any
 }
 
 @Component({
@@ -44,46 +53,32 @@ export class GearListComponent implements OnInit {
     // Get list to dropdown
     this.lists.getFullList().subscribe(lists => {
       // this.gearLists = lists
-      lists.map(list => {
+      lists.map((list : List) => {
         if(list.primary){
           this.list = list
           this.listReady = true
           this.gearLists[0] = list
-          console.log(list)
-          let objToArray = Object.keys(this.list.gear).map( gear => {
-            return this.list.gear[gear]
-          })
-          this.gearList = objToArray
+          this.list = list
+          // this.gearList = list.gear
+          this.listPressed(list)
+          this.dataReady = true
           this.dataReady = true
         } else {
-          console.log(list)
           this.gearLists.push(list)
         }
       })
     })
   }
+  ngOnInit() { }
 
-  // Firebase initiazation
-  ngOnInit() {  
-    // get list of gear from firebase
-    this.gearListService.getGearList().subscribe(list => {
-      // console.log(list)
-      // this.gearList = list
-      // this.dataReady = true
+  // Change gearlist when select is changed
+  listPressed(list){
+    let objToArray = Object.keys(this.list.gear).map( gear => {
+       return this.list.gear[gear]
     })
-
-    // Get list from selected list
-    // this.gearList = this.list.gear
-    // this.dataReady = true
-  }
-
-  listPressed(list, e){
-    
-    // Object.keys(list).map(i => console.log(i))
-    let a = {}
-    Object.assign(a, list)
-    console.log(e)
-    
+    this.list = list
+    this.gearList = objToArray
+    console.log(objToArray)
   }
 
   // Add Button Clicked
@@ -96,7 +91,7 @@ export class GearListComponent implements OnInit {
       done: false
     }
     
-    this.gearListService.addGear(newItem)
+    this.gearListService.addGear(newItem, this.list.$key)
     f.reset()
 
   }
@@ -113,8 +108,9 @@ export class GearListComponent implements OnInit {
 
   // Save changes
   saveClicked(itemToUpdate) {
-    this.gearListService.updateGear(itemToUpdate)
-    this.editClicked();
+    console.log(Object.keys(this.list.gear))
+    // this.gearListService.updateGear(itemToUpdate, this.list.$key)
+    // this.editClicked();
   }
 
   // Save all gear objects

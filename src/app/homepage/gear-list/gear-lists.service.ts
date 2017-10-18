@@ -14,10 +14,6 @@ export class GearListsService {
         this.currentList = list
     }
 
-    getCurrentList(){
-        return this.firebase.af.object('/gearlists/-Kvanm3pU81a9hQDUEkk')
-    }
-
     getFullList(){
         return this.lists;
     }

@@ -9,8 +9,8 @@
 
   <div class="well add">
 
-      <select #e *ngIf="listReady" class="form-control"  [(ngModel)]="list" name="" id="" (change)="listPressed(list, e)" >
-        <option *ngFor="let list of gearLists" value="{{ list }}">{{ list.name }}</option>
+      <select *ngIf="listReady" class="form-control"  [(ngModel)]="list" name="list" id="" (change)="listPressed(list)" >
+        <option *ngFor="let list of gearLists" [ngValue]="list">{{ list.name }}</option>
       </select>
       <br>
         <app-add-list></app-add-list>
@@ -22,7 +22,7 @@
       <!-- Gear List-->
       <!-- <input class="form-control" type="text" [(ngModel)]="filteredStatus" placeholder="search for instrument..." >  -->
 
-      <div *ngFor="let item of gearList | sorting: 'category' " class="wrapper-card">
+      <div *ngFor="let item of gearList" class="wrapper-card">
         <form>
           <div class="wrapper-card-content">
             <div class="item">
