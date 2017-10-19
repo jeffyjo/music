@@ -74,19 +74,19 @@
               </div>
               
               <div *ngIf="isEditting" class="gearlist-btnGroup">
-                <button class="btn btn-danger" (click)="deletePressed(item)" >Delete</button>
-                <button class="btn btn-success" (click)="saveClicked(item)">Save</button>
+                <button class="btn btn-danger" type="button" (click)="deletePressed(item)" >Delete</button>
+                <button class="btn btn-success" type="button" (click)="saveClicked(item)">Save</button>
               </div>
             </div>
           </div>
         </form>
       </div>
       <div class="pull-right button-top">
-        <button *ngIf="isEditting" class="btn btn-primary" (click)="saveAllClicked()">Save All</button>  
         <button 
             class="btn btn-primary" 
             id="gearlist-editBtn" 
             (click)="editClicked()">{{ editButtonText }}</button>
+            <button *ngIf="isEditting" class="btn btn-success" (click)="saveAllClicked()">Save All</button>  
       </div>
 
       <!-- Add new Item-->

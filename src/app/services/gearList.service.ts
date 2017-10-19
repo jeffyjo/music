@@ -18,16 +18,14 @@ export class GearListService {
         return this.firebaseService.af.list('/gearlists/' + listID + '/gear').push(gear)
     }
 
-    deleteGear(gearKey){
-        return this.gearList.remove(gearKey)
+    deleteGear(gearKey, listID){
+        let currentGearList = this.firebaseService.af.list('/gearlists/' + listID + '/gear')
+        return currentGearList.remove(gearKey)
     }
 
-    updateGear(gear, listID){
-        // return this.gearList.update(gear.$key, gear)
+    updateGear(gear, gearID, listID){
         let currentGearList = this.firebaseService.af.list('/gearlists/' + listID + '/gear')
-        // return currentGearList.update(gear.$key, gear)
-        console.log(currentGearList)
-        console.log(gear.$key)
+        return currentGearList.update(gearID, gear)
     }
 
 }

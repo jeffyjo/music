@@ -78,7 +78,6 @@ export class GearListComponent implements OnInit {
     })
     this.list = list
     this.gearList = objToArray
-    console.log(objToArray)
   }
 
   // Add Button Clicked
@@ -106,11 +105,11 @@ export class GearListComponent implements OnInit {
     this.isEditting = !this.isEditting
   }
 
-  // Save changes
+  // Save changes to one gear Object
   saveClicked(itemToUpdate) {
-    console.log(Object.keys(this.list.gear))
-    // this.gearListService.updateGear(itemToUpdate, this.list.$key)
-    // this.editClicked();
+    let gearID = this.getGearID(itemToUpdate)
+    this.gearListService.updateGear(itemToUpdate, gearID, this.list.$key)
+    this.editClicked();
   }
 
   // Save all gear objects
@@ -122,9 +121,19 @@ export class GearListComponent implements OnInit {
     this.isEditting = false
   }
   
+  // Delete one gear Object
   deletePressed(itemToDelete) {
-    this.gearListService.deleteGear(itemToDelete.$key)
+    let gearID = this.getGearID(itemToDelete)
+    this.gearListService.deleteGear(gearID, this.list.$key)
+  }
 
+  // Get gear ObjectID from this.list
+  getGearID(item){
+    for(let gearID in this.list.gear){
+      if(this.list.gear[gearID].id === item.id){
+        return gearID
+      }
+    }
   }
 
 }
