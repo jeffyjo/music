@@ -1,13 +1,18 @@
-import { GearList } from './../../models/gearlist';
-import { element } from 'protractor';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { FirebaseListObservable } from 'angularfire2/database';
+
+import { FilterArrayPipe } from './../../pipes/filter-array-pipe';
+
+// Services
 import { GearListService } from './../../services/gearList.service';
 import { FirebaseService } from './../../services/firebase.service';
-import { FilterArrayPipe } from './../../pipes/filter-array-pipe';
+import { GearListsService } from '../../services/gear-lists.service';
+
+// Models
+import { GearList } from './../../models/gearlist';
 import { Category } from './../../models/category';
-import { GearListsService } from './gear-lists.service';
+import { List } from '../../models/list';
 
 class Gear {
   id: string
@@ -16,14 +21,6 @@ class Gear {
   category: string
   done : boolean
   $key : any
-}
-
-interface List {
-  _id: string
-  name: string
-  primary: boolean
-  $key: any
-  gear: any
 }
 
 @Component({
@@ -57,11 +54,9 @@ export class GearListComponent implements OnInit {
         if(list.primary){
           this.list = list
           this.listReady = true
-          this.gearLists[0] = list
+          this.gearLists.unshift(list)
           this.list = list
-          // this.gearList = list.gear
           this.listPressed(list)
-          this.dataReady = true
           this.dataReady = true
         } else {
           this.gearLists.push(list)

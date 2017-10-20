@@ -1,3 +1,4 @@
+import { GearListsService } from './gear-lists.service';
 import { Injectable } from '@angular/core';
 import { FirebaseService } from './firebase.service';
 
@@ -5,7 +6,9 @@ import { FirebaseService } from './firebase.service';
 export class BandinfoService {
   bandInfo
 
-  constructor(private firebaseService: FirebaseService) {
+  constructor(private firebaseService: FirebaseService,
+              private lists: GearListsService
+  ) {
     this.bandInfo = this.firebaseService.af.object('/bandinfo')
    }
   
@@ -14,7 +17,8 @@ export class BandinfoService {
   }
 
   updateBandinfo(bandinfo){
-    return this.bandInfo.update(bandinfo)
+    this.lists.updatePrimary(bandinfo.gearList)
+    // return this.bandInfo.update(bandinfo)
   }
 
 }

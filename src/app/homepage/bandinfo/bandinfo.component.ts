@@ -6,6 +6,9 @@ import { BandmemberService } from './../../services/bandmember.service';
 import { Bandinfo } from './../../models/bandinfo';
 import { BandinfoService } from './../../services/bandinfo.service';
 
+import { GearListsService } from './../../services/gear-lists.service';
+import { List } from './../../models/list';
+
 @Component({
   selector: 'app-bandinfo',
   templateUrl: './bandinfo.component.html',
@@ -16,10 +19,13 @@ export class BandinfoComponent implements OnInit {
   @Output() bandMembers : BandMember[]
   bandinfo : Bandinfo 
   bandinfoAvailable = false
+  list
+  gearList = []
 
   constructor(
     private bandMemberService: BandmemberService,
-    private bandInfoService: BandinfoService
+    private bandInfoService: BandinfoService,
+    private lists: GearListsService
   ) { 
     this.bandinfo = {
       $key: '',
@@ -27,6 +33,24 @@ export class BandinfoComponent implements OnInit {
       bandPhone: 0,
       bandMail: '',
     }
+
+     // Get list to dropdown
+     this.lists.getFullList().subscribe(lists => {
+      // this.gearLists = lists
+      lists.map((list : List) => {
+        if(list.primary){
+          this.list = list
+          this.gearList.unshift(list)
+          this.listPressed(list)
+        } else {
+          this.gearList.push(list)
+        }
+      })
+    })
+  }
+
+  listPressed(list){
+    this.list = list
   }
 
   ngOnInit() {
@@ -68,13 +92,18 @@ export class BandinfoComponent implements OnInit {
 
   saveBandinfoPressed(form){
     let controls = form.controls
+    let gearList = controls.list.value
+    gearList.primary = true
+
     let bandinfo = {
       bandName: controls.bandName.value,
       bandMail: controls.bandMail.value,
       bandPhone: controls.bandPhone.value,
+      gearList: gearList,
       bandDescription: controls.bandDescription.value,
       bandPressRelease: controls.bandPressRelease.value
     }
+
     this.bandInfoService.updateBandinfo(bandinfo)
     this.isEditting = false
   }

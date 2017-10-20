@@ -66,10 +66,15 @@
         </md-select>
         </md-input-container>
         <br>
-        <label for="gearList">GearList</label>
-        <select class="form-control" name="" id="">
+        <!-- <select class="form-control" name="" id="">
           <option value="">Gealist</option>
-        </select>
+        </select> -->
+        <div>
+          <label for="gearList">GearList</label>
+          <select *ngIf="listReady" class="form-control"  [(ngModel)]="list" name="list" id="" (change)="listPressed(list)" >
+            <option *ngFor="let list of gearList" [ngValue]="list">{{ list.name }}</option>
+          </select>
+        </div>
       </div>
       </form>
   </div>

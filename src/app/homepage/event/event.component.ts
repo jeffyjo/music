@@ -1,3 +1,4 @@
+import { GearListsService } from './../../services/gear-lists.service';
 import { Component, OnInit, OnDestroy, ViewChild, Input } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -6,6 +7,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Event } from './../../models/event';
 import { EventsService } from './../../services/events.service';
 import { Colors } from './../../models/colors';
+import { List } from './../../models/list';
 
 @Component({
   selector: 'app-event',
@@ -14,7 +16,9 @@ import { Colors } from './../../models/colors';
 })
 export class EventComponent implements OnInit, OnDestroy {
   event : Event
-  gearList : any
+  gearList = []
+  list
+  listReady = false
   eventForm
   eventAvailable = false
   colorUpdated = false
@@ -23,7 +27,8 @@ export class EventComponent implements OnInit, OnDestroy {
 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private es: EventsService
+              private es: EventsService,
+              private gearlistsService: GearListsService
   ) { 
     this.event = {
       $key : null,
@@ -33,6 +38,24 @@ export class EventComponent implements OnInit, OnDestroy {
       end : null,
       color : null
     } 
+
+    this.gearlistsService.getFullList().subscribe(lists => {
+      lists.map((list : List) => {
+        if(list.primary){
+          this.listReady = true
+          this.gearList.unshift(list)
+          // this.gearList = list.gear
+          this.listPressed(list)
+        } else {
+          this.gearList.push(list)
+        }
+      })
+    })
+  }
+
+  // Change gearlist when select is changed
+  listPressed(list){
+    this.list = list
   }
 
   ngOnInit() {

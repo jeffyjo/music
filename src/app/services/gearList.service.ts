@@ -14,7 +14,6 @@ export class GearListService {
     }
 
     addGear(gear, listID){
-        // return this.gearList.push(gear)
         return this.firebaseService.af.list('/gearlists/' + listID + '/gear').push(gear)
     }
 

@@ -54,7 +54,7 @@ import { BandmemberService } from './services/bandmember.service';
 import { BandinfoService } from './services/bandinfo.service';
 import { Colors } from './models/colors';
 import { AddListDialog } from './homepage/gear-list/add-list/addList.component';
-import { GearListsService } from './homepage/gear-list/gear-lists.service';
+import { GearListsService } from './services/gear-lists.service';
 import { ClickOutsideDirective } from './shared/clickOutside.directive';
 
 

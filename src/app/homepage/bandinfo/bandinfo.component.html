@@ -65,6 +65,12 @@
           required>
       </div>
       <br>
+      <div>  
+        <select class="form-control" [disabled]="!isEditting" [(ngModel)]="list" name="list" id="" (change)="listPressed(list)" >
+          <option *ngFor="let list of gearList" [ngValue]="list">{{ list.name }}</option>
+        </select>
+      </div>
+      <br>
       <div class="form-group">
           <label>Description</label>
           <textarea 

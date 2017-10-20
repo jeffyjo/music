@@ -1,5 +1,5 @@
 import { GearList } from './../../../models/gearlist';
-import { GearListsService } from './../gear-lists.service';
+import { GearListsService } from '../../../services/gear-lists.service';
 import { AddListDialogsService } from './addList-dialog.service';
 import { Component, OnInit } from '@angular/core';
 
