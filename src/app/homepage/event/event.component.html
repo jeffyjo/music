@@ -54,7 +54,7 @@
             <md-option 
                 *ngIf="!colorUpdated"
                 class="color-box-container"
-                [value]="event.color">{{ event.color.value }}
+                [value]="event?.color">{{ event?.color?.value }}
             </md-option>
             <md-option 
                 *ngFor="let c of colors" 
