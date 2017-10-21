@@ -49,7 +49,7 @@ export class GearListComponent implements OnInit {
   ) { 
     // Get list to dropdown
     this.lists.getFullList().subscribe(lists => {
-      // this.gearLists = lists
+      this.gearLists = []
       lists.map((list : List) => {
         if(list.primary){
           this.list = list
@@ -75,8 +75,10 @@ export class GearListComponent implements OnInit {
     this.gearList = objToArray
   }
 
+  // FIX: Stay on list and don't go back to primary
+
   // Add Button Clicked
-  addClicked(f : NgForm){
+  addClicked(f : NgForm, list){
     let form = f.value
     let newItem = {
       name: form.name,
@@ -87,6 +89,7 @@ export class GearListComponent implements OnInit {
     
     this.gearListService.addGear(newItem, this.list.$key)
     f.reset()
+    this.listPressed(list)
 
   }
 

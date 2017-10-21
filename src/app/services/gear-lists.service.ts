@@ -41,6 +41,7 @@ export class GearListsService {
         });
     }
 
+    // Don't duplicate whole lists
     addList(list){
         this.lists.push(list)
     }

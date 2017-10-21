@@ -66,6 +66,7 @@
       </div>
       <br>
       <div>  
+        <label>Primary Gearlist</label>
         <select class="form-control" [disabled]="!isEditting" [(ngModel)]="list" name="list" id="" (change)="listPressed(list)" >
           <option *ngFor="let list of gearList" [ngValue]="list">{{ list.name }}</option>
         </select>

@@ -92,7 +92,7 @@
       <!-- Add new Item-->
       <h3>Add new</h3>
       <div class="wrapper-card">
-        <form #f="ngForm" (ngSubmit)="addClicked(f)">
+        <form #f="ngForm" (ngSubmit)="addClicked(f, list)">
             <div class="wrapper-card-content">
                 <div class="item">
                   <label for="name">Name</label>

@@ -18,6 +18,8 @@ export class AddListComponent implements OnInit {
   ngOnInit() {
   }
 
+  // FIX - get this list when created and don't go på primary list
+
   openAddListDialog(){
     this.addList.confirm('Create new list').subscribe(res => {
       console.log(res)
@@ -25,7 +27,8 @@ export class AddListComponent implements OnInit {
         let newList = {
           _id : '',
           name: res,
-          gear: ''
+          gear: '',
+          primary: false
         }
           this.listsService.addList(newList)
       }
