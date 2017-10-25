@@ -5,14 +5,14 @@ import { Router, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { GearListComponent } from './homepage/gear-list/gear-list.component';
-import { CalendarComponent } from './homepage/calendar/calendar.component';
+import { CalendarEventComponent } from './homepage/calendar/calendar.component';
 import { HeaderIndexComponent } from './header-index/header-index.component';
 
 const appRoutes : Routes = [
   { path : "", component : HeaderIndexComponent },
   { path : "homepage", component : HomepageComponent,
     children : [
-      { path : "calendar", component : CalendarComponent },
+      { path : "calendar", component : CalendarEventComponent },
       { path : "gearlist", component : GearListComponent }
   ] }
 ]

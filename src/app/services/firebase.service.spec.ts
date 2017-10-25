@@ -11,29 +11,13 @@ import {
     tick 
 } from '@angular/core/testing';
 
-class AngularFireAuthMock extends AngularFireAuth {
-    public login(){}
-    public logout(){}
-}
-
-class AngularFireAuthModuleMock extends AngularFireAuthModule {
-    public auth: AngularFireAuthMock;
-}
-
-
 import { FirebaseService } from './firebase.service';
-
-    let MockFirebase = require('mockFirebase').MockFirebase
 
   describe('Service: firebaseService', () => {
     let firebaseService: FirebaseService;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            providers: [ { 
-                provide: AngularFireAuthModule, 
-                useClass: AngularFireAuthModuleMock 
-            } ]
         });
     });
 

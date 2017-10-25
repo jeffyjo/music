@@ -19,14 +19,12 @@ describe('Component login', () => {
   let component: HeaderIndexFormComponent;
   let fixture: ComponentFixture<HeaderIndexFormComponent>;
   let afAuth;
-  let Mockfirebase = require('mockfirebase').Mockfirebase;
   
   
   beforeEach(async() => {
     TestBed.configureTestingModule({
       declarations: [HeaderIndexFormComponent],
       imports: [ReactiveFormsModule, FormsModule, RouterModule],
-      providers: [FirebaseService, AngularFireAuth, FirebaseApp]
     })
       .compileComponents();
   });

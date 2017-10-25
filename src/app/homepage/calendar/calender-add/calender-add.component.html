@@ -6,12 +6,12 @@
         <div class="wrapper-card-content">
           <div class="item">
             <label for="eventName">Event</label>
-            <input class="form-control" type="text" [(ngModel)]="eventName" name="eventName" id="" required>
+            <input class="form-control" type="text" [(ngModel)]="eventName" name="eventName" id="eventName" required>
           </div>
           <div class="item">
             <label for="startDate">Start date</label>
             <div class="datepicker-container" >
-              <input class="form-control" mdInput [mdDatepicker]="startPicker" placeholder="Choose a date" [(ngModel)]="startDate" name="startDate" id="" required>
+              <input class="form-control" mdInput [mdDatepicker]="startPicker" placeholder="Choose a date" [(ngModel)]="startDate" name="startDate" id="startDate" required>
                 <md-datepicker-toggle mdSuffix [for]="startPicker"></md-datepicker-toggle>
                 <md-datepicker #startPicker></md-datepicker>
             </div>
@@ -19,7 +19,7 @@
           <div class="item">
               <label for="endDate">End date</label>
               <div class="datepicker-container" >
-                <input class="form-control" mdInput [mdDatepicker]="endPicker" placeholder="Choose a date" [(ngModel)]="endDate" name="endDate" id="" required>
+                <input class="form-control" mdInput [mdDatepicker]="endPicker" placeholder="Choose a date" [(ngModel)]="endDate" name="endDate" id="endDate" required>
                   <md-datepicker-toggle mdSuffix [for]="endPicker"></md-datepicker-toggle>
                   <md-datepicker #endPicker></md-datepicker>
               </div>
@@ -31,6 +31,7 @@
                 #select="mdSelect" 
                 [(ngModel)]="color" 
                 name="color" 
+                id="color"
                 required>
                 <md-option 
                   *ngFor="let c of colors" 
@@ -45,7 +46,7 @@
           </div>  
           <div class="item">
             <label for="">Add Event</label>
-            <button class="btn btn-success" type="submit" [disabled]="!f.valid" >Save event</button>
+            <button class="btn btn-success" type="submit" id="submitEvent" [disabled]="!f.valid" >Save event</button>
           </div>
         </div>
       </form>
