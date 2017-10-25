@@ -11,34 +11,34 @@ import {
     tick 
 } from '@angular/core/testing';
 
-class AngularFireAuthMock extends AngularFireAuth {
-    public login(){}
-    public logout(){}
-}
+// class AngularFireAuthMock extends AngularFireAuth {
+//     public login(){}
+//     public logout(){}
+// }
 
-class AngularFireAuthModuleMock extends AngularFireAuthModule {
-    public auth: AngularFireAuthMock;
-}
+// class AngularFireAuthModuleMock extends AngularFireAuthModule {
+//     public auth: AngularFireAuthMock;
+// }
 
 
-import { FirebaseService } from './firebase.service';
+// import { FirebaseService } from './firebase.service';
 
-    let MockFirebase = require('mockFirebase').MockFirebase
+//     let MockFirebase = require('mockFirebase').MockFirebase
 
-  describe('Service: firebaseService', () => {
-    let firebaseService: FirebaseService;
+//   describe('Service: firebaseService', () => {
+//     let firebaseService: FirebaseService;
 
-    beforeEach(() => {
-        TestBed.configureTestingModule({
-            providers: [ { 
-                provide: AngularFireAuthModule, 
-                useClass: AngularFireAuthModuleMock 
-            } ]
-        });
-    });
+//     beforeEach(() => {
+//         TestBed.configureTestingModule({
+//             providers: [ { 
+//                 provide: AngularFireAuthModule, 
+//                 useClass: AngularFireAuthModuleMock 
+//             } ]
+//         });
+//     });
 
-    it('should be true', () => {
-        expect(true).toBeTruthy();
-    });
+    // it('should be true', () => {
+    //     expect(true).toBeTruthy();
+    // });
     
-  });
+//   });

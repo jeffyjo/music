@@ -22,7 +22,7 @@ import { HomepageComponent } from './../homepage/homepage.component';
 import { HomepageHeaderComponent } from './../homepage/homepage-header/homepage-header.component';
 import { HeaderIndexFormComponent } from './header-index-form/header-index-form.component';
 
-import { appRoutes } from './../app.module';
+import { appRoutes } from './../app-routing.module';
 
 describe('HeaderIndexComponent', () => {
   let component: HeaderIndexComponent;
@@ -59,19 +59,19 @@ describe('HeaderIndexComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should be created', () => {
-    expect(component).toBeTruthy();
-  });
+  // it('should be created', () => {
+  //   expect(component).toBeTruthy();
+  // });
   
-  it('fakeAsync works', fakeAsync(() => {
-    let promise = new Promise((resolve) => {
-      setTimeout(resolve, 10)
-    });
-    let done = false;
-    promise.then(() => done = true);
-    tick(50);
-    expect(done).toBeTruthy();
-  }));
+  // it('fakeAsync works', fakeAsync(() => {
+  //   let promise = new Promise((resolve) => {
+  //     setTimeout(resolve, 10)
+  //   });
+  //   let done = false;
+  //   promise.then(() => done = true);
+  //   tick(50);
+  //   expect(done).toBeTruthy();
+  // }));
 
   // it('should navigate to "index-home" takes to index' ,fakeAsync( () => {
   //   router.navigate(['']);

@@ -15,34 +15,34 @@ import { FirebaseService } from './../../services/firebase.service';
 
 // https://codecraft.tv/courses/angular/unit-testing/model-driven-forms/
 
-describe('Component login', () => {
-  let component: HeaderIndexFormComponent;
-  let fixture: ComponentFixture<HeaderIndexFormComponent>;
-  let afAuth;
-  let Mockfirebase = require('mockfirebase').Mockfirebase;
+// describe('Component login', () => {
+//   let component: HeaderIndexFormComponent;
+//   let fixture: ComponentFixture<HeaderIndexFormComponent>;
+//   let afAuth;
+//   let Mockfirebase = require('mockfirebase').Mockfirebase;
   
   
-  beforeEach(async() => {
-    TestBed.configureTestingModule({
-      declarations: [HeaderIndexFormComponent],
-      imports: [ReactiveFormsModule, FormsModule, RouterModule],
-      providers: [FirebaseService, AngularFireAuth, FirebaseApp]
-    })
-      .compileComponents();
-  });
+//   beforeEach(async() => {
+//     TestBed.configureTestingModule({
+//       declarations: [HeaderIndexFormComponent],
+//       imports: [ReactiveFormsModule, FormsModule, RouterModule],
+//       providers: [FirebaseService, AngularFireAuth, FirebaseApp]
+//     })
+//       .compileComponents();
+//   });
 
-  beforeEach( () => {
-    // create component and test fixture
-    fixture = TestBed.createComponent(HeaderIndexFormComponent);
+//   beforeEach( () => {
+//     // create component and test fixture
+//     fixture = TestBed.createComponent(HeaderIndexFormComponent);
     
-    // get test component from the fixture
-    component = fixture.componentInstance;
+//     // get test component from the fixture
+//     component = fixture.componentInstance;
 
 
-  })
+//   })
 
   // it('should be false', () => {
   //   expect(true).toBeTruthy();
   // })
 
-});
+// });
